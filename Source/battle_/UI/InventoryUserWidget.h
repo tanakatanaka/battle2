@@ -15,6 +15,7 @@ class BATTLE__API UInventoryUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	UFUNCTION(BlueprintCallable)
 	void ReadStruct();
 
 	
