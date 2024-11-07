@@ -18,5 +18,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ReadStruct();
 
+	int a;
 	
 };

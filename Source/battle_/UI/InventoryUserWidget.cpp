@@ -7,8 +7,10 @@
 
 void UInventoryUserWidget::ReadStruct()
 {
+    a = 1;
+
     // Data Tableアセットを取得
-    static ConstructorHelpers::FObjectFinder<UDataTable> DataTableObj(TEXT("DataTable'/Game/StylishCombatKit/Struct/DataTable/DT_ItemParaDB'"));
+    static ConstructorHelpers::FObjectFinder<UDataTable> DataTableObj(TEXT("DataTable'/All/Game/StylishCombatKit/Struct/DataTable/DT_ItemParaDB.DT_ItemParaDB'"));
     
     if (DataTableObj.Succeeded())
     {
