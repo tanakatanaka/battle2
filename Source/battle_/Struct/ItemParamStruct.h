@@ -6,7 +6,7 @@
 #include "ItemParamStruct.generated.h"
 
 USTRUCT(BlueprintType)
-struct FItemParamStruct
+struct FItemParamStruct : public FTableRowBase
 {
     GENERATED_BODY()
 
@@ -19,4 +19,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="MyStruct")
     FString ImageFileName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="MyStruct")
+    FString Text;
+
 };
