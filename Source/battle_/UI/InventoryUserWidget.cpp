@@ -2,4 +2,9 @@
 
 
 #include "InventoryUserWidget.h"
+#include "Engine/DataTable.h"
 
+void UInventoryUserWidget::ReadStruct()
+{
+    
+}

@@ -6,6 +6,9 @@
 #include "Blueprint/UserWidget.h"
 #include "IconUserWidget.generated.h"
 
+class UItemParam;
+
+
 /**
  * 
  */
@@ -14,4 +17,7 @@ class BATTLE__API UIconUserWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
+	UItemParam* m_baseParam;
+	
+
 };
