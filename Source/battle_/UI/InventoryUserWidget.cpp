@@ -10,31 +10,26 @@ void UInventoryUserWidget::ReadStruct()
     a = 1;
 
     // Data Tableアセットを取得
-    static ConstructorHelpers::FObjectFinder<UDataTable> DataTableObj(TEXT("DataTable'/All/Game/StylishCombatKit/Struct/DataTable/DT_ItemParaDB.DT_ItemParaDB'"));
-    
-    if (DataTableObj.Succeeded())
+    UDataTable* LoadedDataTable = Cast<UDataTable>(StaticLoadObject(UDataTable::StaticClass(), nullptr, TEXT("/Game/StylishCombatKit/Struct/DataTable/DT_ItemParaDB.DT_ItemParaDB")));
+
+    if (LoadedDataTable)
     {
-        UDataTable* DataTable = DataTableObj.Object;
+        // DataTableの全行を取得
+        static const FString ContextString(TEXT("GENERAL"));
+        TArray<FItemParamStruct*> AllRows;
+        LoadedDataTable->GetAllRows<FItemParamStruct>(ContextString, AllRows);
 
-        for (const auto& Row : DataTable->GetRowMap())
+        for (auto& Row : AllRows)
         {
-            FItemParamStruct* DataRow = (FItemParamStruct*)(Row.Value);
-
-            if (DataRow)
+            if (Row)
             {
-                /*
-                // 各プロパティにアクセス
-                UE_LOG(LogTemp, Log, TEXT("Name: %s, Age: %d, Score: %f"),
-                    *DataRow->Name,
-                    DataRow->Age,
-                    DataRow->Score);
-                */
+               
             }
         }
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("Failed to load DataTable"));
+        UE_LOG(LogTemp, Error, TEXT("Failed to load DataTable in BeginPlay! Check the path or DataTable settings."));
     }
     
 }
