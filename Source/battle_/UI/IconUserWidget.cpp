@@ -1,17 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+#include "IconUserWidget.h"
 #include "IImageWrapper.h"
 #include "IImageWrapperModule.h"
 #include "Engine/Texture2D.h"
-#include "IconUserWidget.h"
-#include "IImageWrapperModule.h"
 #include "Engine/PostProcessVolume.h"
 
 
 UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
 {
-    return nullptr;
-/*
     // ファイルをバイト配列に読み込む
     TArray<uint8> ImageData;
     if (!FFileHelper::LoadFileToArray(ImageData, *ImagePath))
@@ -31,7 +27,7 @@ UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
         int32 Width = ImageWrapper->GetWidth();
         int32 Height = ImageWrapper->GetHeight();
 
-        const TArray<uint8>* RawData = nullptr;
+        TArray<uint8> RawData;
         if (ImageWrapper->GetRaw(ERGBFormat::BGRA, 8, RawData))
         {
             // テクスチャ作成
@@ -39,7 +35,7 @@ UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
 
             // テクスチャの設定
             void* TextureData = Texture->GetPlatformData()->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
-            FMemory::Memcpy(TextureData, RawData->GetData(), RawData->Num());
+            FMemory::Memcpy(TextureData, RawData.GetData(), RawData.Num());
             Texture->GetPlatformData()->Mips[0].BulkData.Unlock();
 
             // テクスチャを更新
@@ -51,6 +47,5 @@ UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
 
     UE_LOG(LogTemp, Error, TEXT("Failed to decode image data."));
     return nullptr;
-*/
 }
 
