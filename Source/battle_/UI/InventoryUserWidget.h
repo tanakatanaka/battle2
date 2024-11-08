@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "../Struct/ItemParamStruct.h"
 #include "InventoryUserWidget.generated.h"
-
 /**
  * 
  */
@@ -18,6 +18,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ReadStruct();
 
-	int a;
-	
+private:
+	TArray<FItemParamStruct*> ItemParamList;
 };

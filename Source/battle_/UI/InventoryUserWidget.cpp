@@ -2,13 +2,10 @@
 
 
 #include "InventoryUserWidget.h"
-#include "../Struct/ItemParamStruct.h"
 #include "Engine/DataTable.h"
 
 void UInventoryUserWidget::ReadStruct()
 {
-    a = 1;
-
     // Data Tableアセットを取得
     UDataTable* LoadedDataTable = Cast<UDataTable>(StaticLoadObject(UDataTable::StaticClass(), nullptr, TEXT("/Game/StylishCombatKit/Struct/DataTable/DT_ItemParaDB.DT_ItemParaDB")));
 
@@ -18,14 +15,7 @@ void UInventoryUserWidget::ReadStruct()
         static const FString ContextString(TEXT("GENERAL"));
         TArray<FItemParamStruct*> AllRows;
         LoadedDataTable->GetAllRows<FItemParamStruct>(ContextString, AllRows);
-
-        for (auto& Row : AllRows)
-        {
-            if (Row)
-            {
-               
-            }
-        }
+        ItemParamList.Append(AllRows);
     }
     else
     {
