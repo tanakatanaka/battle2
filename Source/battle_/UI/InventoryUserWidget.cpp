@@ -31,5 +31,4 @@ void UInventoryUserWidget::ReadStruct()
     {
         UE_LOG(LogTemp, Error, TEXT("Failed to load DataTable in BeginPlay! Check the path or DataTable settings."));
     }
-    
 }
