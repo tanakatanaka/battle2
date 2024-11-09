@@ -4,17 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "../Struct/ItemParamStruct.h"
-#include "ItemActor.generated.h"
+#include "Struct/ItemParamStruct.h"
+#include "PlayerInfoActor.generated.h"
 
 UCLASS()
-class BATTLE__API AItemActor : public AActor
+class BATTLE__API APlayerInfoActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AItemActor();
+	APlayerInfoActor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -24,12 +24,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable)
-	void AddInventory();
+	class ItemParamInfo
+	{
+	public:
+		FItemParamStruct ItemParam;
+		int count;
+	};
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ItemParam")
-	FItemParamStruct ItemParam;
+	//éÊìæÇµÇΩÉAÉCÉeÉÄèÓïÒ
+	TArray<ItemParamInfo*> ItemInfoList;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ItemParam")
-	int count;
 };
