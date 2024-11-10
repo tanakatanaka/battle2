@@ -18,16 +18,14 @@ private:
 	class ItemParamInfo
 	{
 	public:
-		FItemParamStruct ItemParam;
+		TSharedPtr<FItemParamStruct> ItemParam;
 		int count;
 	};
 
 	//æ“¾‚µ‚½ƒAƒCƒeƒ€î•ñ
-	TArray<ItemParamInfo> ItemInfoList;
+	TArray< TSharedPtr<ItemParamInfo>> ItemInfoList;
 
 public:
 	UFUNCTION(BlueprintCallable)
 	void GetItem(FItemParamStruct itemInfo, int num);
-
-	TSharedPtr<FItemParamStruct> Message;
 };
