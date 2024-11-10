@@ -2,6 +2,7 @@
 
 
 #include "ItemActor.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AItemActor::AItemActor()
@@ -25,8 +26,4 @@ void AItemActor::Tick(float DeltaTime)
 
 }
 
-void AItemActor::AddInventory()
-{
-
-}
 

@@ -24,9 +24,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable)
-	void AddInventory();
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ItemParam")
 	FItemParamStruct ItemParam;
 
