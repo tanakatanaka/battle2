@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Templates/SharedPointer.h"
 #include "Struct/ItemParamStruct.h"
 #include "PlayerInfoActor.generated.h"
 
@@ -28,5 +29,5 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void GetItem(FItemParamStruct itemInfo, int num);
 
-
+	TSharedPtr<FItemParamStruct> Message;
 };
