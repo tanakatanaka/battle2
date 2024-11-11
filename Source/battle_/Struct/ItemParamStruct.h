@@ -23,4 +23,25 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="MyStruct")
     FString Text;
 
+
+
+      // デフォルトコンストラクタ
+    FItemParamStruct()
+        : ID(0), 
+        Name(TEXT("Default")),
+        ImageFileName(TEXT("Default")),
+        Text(TEXT("Default"))
+    {
+    }
+
+    // コピーコンストラクタ
+    FItemParamStruct(const FItemParamStruct& Other)
+        : ID(Other.ID), 
+        Name(Other.Name),
+        ImageFileName(Other.ImageFileName),
+        Text(Other.Text)
+    {
+    }
+
+
 };

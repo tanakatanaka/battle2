@@ -3,23 +3,23 @@
 
 #include "PlayerInfoActor.h"
 
-void APlayerInfoActor::GetItem(FItemParamStruct itemInfo, int num)
+void APlayerInfoActor::PickItem(FItemParamStruct itemInfo, int num)
 {
-	for (TSharedPtr<ItemParamInfo> item : ItemInfoList)
+	for (ItemParamInfo item : ItemInfoList)
 	{
-		if (item->ItemParam->ID == itemInfo.ID)
+		if (item.ItemParam.ID == itemInfo.ID)
 		{
-			item->count += num;
+			item.count += num;
 			return;
 		}
 	}
-	/*
-	TSharedPtr<ItemParamInfo> newItem = MakeShared< ItemParamInfo >(this);
-	newItem->ItemParam;
-	newItem->count = num;
+	
+	ItemParamInfo newItem;
+	newItem.ItemParam = itemInfo;
+	newItem.count = num;
 
 	ItemInfoList.Add(newItem);
-	*/
+	
 
 }
 
