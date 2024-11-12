@@ -21,6 +21,8 @@ class BATTLE__API UIconUserWidget : public UUserWidget
 public:
 	UTexture2D* LoadTextureFromFile(const FString& ImagePath);
 
+	void UpdateIconInfo();
+
 private:
 	UItemParam* m_baseParam;
 	

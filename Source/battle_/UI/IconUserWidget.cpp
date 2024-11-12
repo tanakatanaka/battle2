@@ -49,3 +49,9 @@ UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
     return nullptr;
 }
 
+void UIconUserWidget::UpdateIconInfo()
+{
+
+}
+
+
