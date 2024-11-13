@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "../Struct/ItemParamStruct.h"
 #include "IconUserWidget.generated.h"
 
 class UItemParam;
@@ -19,14 +20,15 @@ class BATTLE__API UIconUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UTexture2D* LoadTextureFromFile(const FString& ImagePath);
+	UTexture2D* LoadTextureFromFile();
+	void UpdateIconInfo(FItemParamStruct itemParam, int count);
 
-	void UpdateIconInfo();
+
 
 private:
 	UItemParam* m_baseParam;
-	
-
+	FItemParamStruct _ItemParam;
+	int _count;
 
 
 };

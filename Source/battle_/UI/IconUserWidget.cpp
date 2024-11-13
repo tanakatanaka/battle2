@@ -6,8 +6,10 @@
 #include "Engine/PostProcessVolume.h"
 
 
-UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
+UTexture2D* UIconUserWidget::LoadTextureFromFile()
 {
+    const FString& ImagePath = _ItemParam.ImageFileName;
+
     // ファイルをバイト配列に読み込む
     TArray<uint8> ImageData;
     if (!FFileHelper::LoadFileToArray(ImageData, *ImagePath))
@@ -49,9 +51,10 @@ UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
     return nullptr;
 }
 
-void UIconUserWidget::UpdateIconInfo()
+void UIconUserWidget::UpdateIconInfo(FItemParamStruct itemParam, int count)
 {
-
+    _ItemParam = itemParam;
+    _count = count;
 }
 
 
