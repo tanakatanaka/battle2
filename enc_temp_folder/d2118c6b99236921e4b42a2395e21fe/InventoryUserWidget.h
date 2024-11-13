@@ -16,11 +16,6 @@ UCLASS()
 class BATTLE__API UInventoryUserWidget : public UUserWidget
 {
 	GENERATED_BODY()
-
-public:
-	void UpdateIconWidget();
-private:
-		TArray<TObjectPtr<UIconUserWidget>> UIconUserWidgetList;
-
+	TArray<UIconUserWidget*> UIconUserWidgetList;
 
 };

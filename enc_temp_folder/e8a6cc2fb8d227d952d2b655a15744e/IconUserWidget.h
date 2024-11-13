@@ -7,6 +7,7 @@
 #include "../Struct/ItemParamStruct.h"
 #include "IconUserWidget.generated.h"
 
+class UItemParam;
 class UTexture2D;
 
 
@@ -21,7 +22,11 @@ class BATTLE__API UIconUserWidget : public UUserWidget
 public:
 	UTexture2D* LoadTextureFromFile();
 	void UpdateIconInfo(FItemParamStruct itemParam, int count);
+
+
+
 private:
+	UItemParam* m_baseParam;
 	FItemParamStruct _ItemParam;
 	int _count;
 
