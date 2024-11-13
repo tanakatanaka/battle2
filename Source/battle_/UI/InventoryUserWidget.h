@@ -18,6 +18,9 @@ class BATTLE__API UInventoryUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	UFUNCTION(BlueprintCallable)
+	void Setup();
+
 	void UpdateIconWidget();
 private:
 		TArray<TObjectPtr<UIconUserWidget>> UIconUserWidgetList;
