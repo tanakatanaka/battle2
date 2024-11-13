@@ -3,12 +3,18 @@
 
 #include "InventoryUserWidget.h"
 #include "IconUserWidget.h"
+#include "../DataManageActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/DataTable.h"
 
-void UInventoryUserWidget::Setup()
+void UInventoryUserWidget::Setup(ADataManageActor* dataManager)
 {
+	if (dataManager == nullptr)
+	{
+		return;
+	}
 
+	_DataManager = dataManager;
 }
 
 void UInventoryUserWidget::UpdateIconWidget()
@@ -19,5 +25,5 @@ void UInventoryUserWidget::UpdateIconWidget()
 	
 	//Game
 
-	UIconUserWidgetList.Add(newWidget);
+	_IconUserWidgetList.Add(newWidget);
 }

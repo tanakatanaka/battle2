@@ -8,6 +8,7 @@
 #include "InventoryUserWidget.generated.h"
 
 class UIconUserWidget;
+class ADataManageActor;
 
 /**
  * 
@@ -19,11 +20,11 @@ class BATTLE__API UInventoryUserWidget : public UUserWidget
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void Setup();
+		void Setup(ADataManageActor* dataManager);
 
 	void UpdateIconWidget();
 private:
-		TArray<TObjectPtr<UIconUserWidget>> UIconUserWidgetList;
-
+		TArray<TObjectPtr<UIconUserWidget>> _IconUserWidgetList;
+		TObjectPtr<ADataManageActor> _DataManager;
 
 };
