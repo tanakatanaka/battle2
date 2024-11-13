@@ -14,6 +14,4 @@ class BATTLE__API UInventoryUserWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
-private:
-	TArray<FItemParamStruct*> ItemParamList;
 };

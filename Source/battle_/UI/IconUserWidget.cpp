@@ -55,6 +55,8 @@ void UIconUserWidget::UpdateIconInfo(FItemParamStruct itemParam, int count)
 {
     _ItemParam = itemParam;
     _count = count;
+
+    UTexture2D* texture = LoadTextureFromFile();
 }
 
 

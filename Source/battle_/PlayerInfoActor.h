@@ -12,20 +12,12 @@ UCLASS()
 class BATTLE__API APlayerInfoActor : public AActor
 {
 	GENERATED_BODY()
+
 	
-private:
-
-	class ItemParamInfo
-	{
-	public:
-		FItemParamStruct ItemParam;
-		int count;
-	};
-
-	//�擾�����A�C�e�����
-	TArray<ItemParamInfo> ItemInfoList;
 
 public:
+	TMap<int, int> ItemIdMap;
+
 	UFUNCTION(BlueprintCallable)
-	void PickItem(FItemParamStruct itemInfo, int num);
+	void PickItem(int id, int num);
 };
