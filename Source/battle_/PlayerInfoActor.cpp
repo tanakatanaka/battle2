@@ -2,9 +2,17 @@
 
 
 #include "PlayerInfoActor.h"
+#include "UI/InventoryUserWidget.h"
+
+void APlayerInfoActor::Initialize(UInventoryUserWidget *inventoryWidget)
+{
+    _inventoryWidget = inventoryWidget;
+}
+
 
 void APlayerInfoActor::PickItem(int id, int num)
 {
+    /*
     for (TPair<int, int> &Pair : ItemIdMap) 
     {
         if (Pair.Key == id) 
@@ -16,5 +24,6 @@ void APlayerInfoActor::PickItem(int id, int num)
 
     //if noItem
     ItemIdMap.Add(id, num);
+    */
 }
 

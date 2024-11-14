@@ -22,7 +22,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void Setup(ADataManageActor* dataManager);
 
-	void UpdateIconWidget();
+	void UpdateIconWidget(int ID, int count);
 private:
 		TArray<TObjectPtr<UIconUserWidget>> _IconUserWidgetList;
 		TObjectPtr<ADataManageActor> _DataManager;

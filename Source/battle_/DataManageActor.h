@@ -16,6 +16,5 @@ public:
 		UFUNCTION(BlueprintCallable)
 		void Initialize();
 
-private:
-	TArray<FItemParamStruct*> ItemParamList;
+		TArray<FItemParamStruct*> ItemParamList;
 };

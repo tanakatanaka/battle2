@@ -8,16 +8,19 @@
 #include "Struct/ItemParamStruct.h"
 #include "PlayerInfoActor.generated.h"
 
+class UInventoryUserWidget;
+
 UCLASS()
 class BATTLE__API APlayerInfoActor : public AActor
 {
 	GENERATED_BODY()
 
-	
-
-public:
-	TMap<int, int> ItemIdMap;
+	UFUNCTION(BlueprintCallable)
+	void Initialize(UInventoryUserWidget *inventoryWidget);
 
 	UFUNCTION(BlueprintCallable)
 	void PickItem(int id, int num);
+
+private:
+	TObjectPtr<UInventoryUserWidget> _inventoryWidget;
 };

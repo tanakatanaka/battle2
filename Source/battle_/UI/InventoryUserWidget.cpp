@@ -17,13 +17,24 @@ void UInventoryUserWidget::Setup(ADataManageActor* dataManager)
 	_DataManager = dataManager;
 }
 
-void UInventoryUserWidget::UpdateIconWidget()
+void UInventoryUserWidget::UpdateIconWidget(int ID, int count)
 {
-	int newID = 0;
-	TObjectPtr<UIconUserWidget> newWidget = CreateWidget<UIconUserWidget>(this);
-	//newWidget->UpdateIconInfo(null, 0);
-	
-	//Game
+	FItemParamStruct *tmpItemParam = nullptr;
 
-	_IconUserWidgetList.Add(newWidget);
+	for(FItemParamStruct *interParam : _DataManager->ItemParamList)
+	{
+		if(interParam->ID == ID)
+		{
+			tmpItemParam = interParam;
+			break;
+		}
+	}
+
+	
+
+
+
+
 }
+
+
