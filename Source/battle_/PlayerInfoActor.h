@@ -16,11 +16,14 @@ class BATTLE__API APlayerInfoActor : public AActor
 	GENERATED_BODY()
 
 	UFUNCTION(BlueprintCallable)
-	void Initialize(UInventoryUserWidget *inventoryWidget);
+	void SetInventoryWidget(UInventoryUserWidget *inventoryWidget);
+
+	UFUNCTION(BlueprintCallable)
+	UInventoryUserWidget* GetInventoryWidget();
 
 	UFUNCTION(BlueprintCallable)
 	void PickItem(int id, int num);
 
 private:
-	TObjectPtr<UInventoryUserWidget> _inventoryWidget;
+	TObjectPtr<UInventoryUserWidget>_inventoryWidget;
 };

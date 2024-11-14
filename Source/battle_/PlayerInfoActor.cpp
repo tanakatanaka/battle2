@@ -4,14 +4,23 @@
 #include "PlayerInfoActor.h"
 #include "UI/InventoryUserWidget.h"
 
-void APlayerInfoActor::Initialize(UInventoryUserWidget *inventoryWidget)
+//callbyBP
+void APlayerInfoActor::SetInventoryWidget(UInventoryUserWidget *inventoryWidget)
 {
     _inventoryWidget = inventoryWidget;
 }
 
+//callbyBP
+UInventoryUserWidget* APlayerInfoActor::GetInventoryWidget()
+{
+    return _inventoryWidget;
+}
 
+//callbyBP
 void APlayerInfoActor::PickItem(int id, int num)
 {
+
+
     /*
     for (TPair<int, int> &Pair : ItemIdMap) 
     {
