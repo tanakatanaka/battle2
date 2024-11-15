@@ -23,9 +23,20 @@ public:
 
 	void UpdateInventory(int ID, int count);
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Icon")
+	void UpdateIconWidget(int index, int count);
+	virtual void UpdateIconWidget_Implementation(int index, int count);
+
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Icon")
+	void CreateIconWidget(FItemParamStruct itemParam, int count);
+	virtual void CreateIconWidget_Implementation(FItemParamStruct itemParam, int count);
+
 private:
-		void UpdateIconWidget(int index, int count);
-		void CreateIconWidget(FItemParamStruct *itemParam, int count);
+		
+
+		
+
 		TObjectPtr<ADataManageActor> _DataManager;
 		TArray<int> _inventoryIDArray;
 };

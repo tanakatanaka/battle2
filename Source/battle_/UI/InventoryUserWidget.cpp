@@ -51,14 +51,18 @@ void UInventoryUserWidget::UpdateInventory(int ID, int count)
 */
 }
 
-void UInventoryUserWidget::CreateIconWidget(FItemParamStruct *tmpItemParam, int count)
+
+
+void UInventoryUserWidget::CreateIconWidget_Implementation(FItemParamStruct tmpItemParam, int count)
 {
-	
+	//UE_LOG(LogTemp, Warning, TEXT("C++側でのデフォルト実装が呼ばれました。"));
 }
 
-void UInventoryUserWidget::UpdateIconWidget(int index, int count)
-{
-	
-}
 
+
+
+void UInventoryUserWidget::UpdateIconWidget_Implementation(int index, int count)
+{
+		
+}
 
