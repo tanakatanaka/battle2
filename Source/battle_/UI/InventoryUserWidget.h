@@ -7,7 +7,6 @@
 #include "../Struct/ItemParamStruct.h"
 #include "InventoryUserWidget.generated.h"
 
-class UIconUserWidget;
 class ADataManageActor;
 
 /**
@@ -20,11 +19,13 @@ class BATTLE__API UInventoryUserWidget : public UUserWidget
 
 public:
 	UFUNCTION(BlueprintCallable)
-		void Setup(ADataManageActor* dataManager);
+	void Setup(ADataManageActor* dataManager);
 
-	void UpdateIconWidget(int ID, int count);
+	void UpdateInventory(int ID, int count);
+
 private:
-		TArray<TObjectPtr<UIconUserWidget>> _IconUserWidgetList;
+		void UpdateIconWidget(int index, int count);
+		void CreateIconWidget(FItemParamStruct *itemParam, int count);
 		TObjectPtr<ADataManageActor> _DataManager;
-
+		TArray<int> _inventoryIDArray;
 };

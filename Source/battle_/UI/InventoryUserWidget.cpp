@@ -17,10 +17,12 @@ void UInventoryUserWidget::Setup(ADataManageActor* dataManager)
 	_DataManager = dataManager;
 }
 
-void UInventoryUserWidget::UpdateIconWidget(int ID, int count)
+
+void UInventoryUserWidget::UpdateInventory(int ID, int count)
 {
 	FItemParamStruct *tmpItemParam = nullptr;
-
+/*
+	//itemLibCheck
 	for(FItemParamStruct *interParam : _DataManager->ItemParamList)
 	{
 		if(interParam->ID == ID)
@@ -30,11 +32,33 @@ void UInventoryUserWidget::UpdateIconWidget(int ID, int count)
 		}
 	}
 
+	if(tmpItemParam == nullptr)
+	{
+		return;
+	}
+
+	for (int i = 0; i < _inventoryIDArray; ++i)
+	{
+		if(_inventoryIDArray[i] == ID)
+		{
+			UpdateIconWidget(i, count);
+			return;
+		}
+	}
+
+	_inventoryIDArray.Add(id);
+	CreateIconWidget(tmpItemParam, count);
+*/
+}
+
+void UInventoryUserWidget::CreateIconWidget(FItemParamStruct *tmpItemParam, int count)
+{
 	
+}
 
-
-
-
+void UInventoryUserWidget::UpdateIconWidget(int index, int count)
+{
+	
 }
 
 

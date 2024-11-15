@@ -19,20 +19,6 @@ UInventoryUserWidget* APlayerInfoActor::GetInventoryWidget()
 //callbyBP
 void APlayerInfoActor::PickItem(int id, int num)
 {
-
-
-    /*
-    for (TPair<int, int> &Pair : ItemIdMap) 
-    {
-        if (Pair.Key == id) 
-        {
-            Pair.Value += num;
-            return;
-        }
-    }
-
-    //if noItem
-    ItemIdMap.Add(id, num);
-    */
+    _inventoryWidget->UpdateInventory(id, num);
 }
 
