@@ -21,7 +21,7 @@ void UInventoryUserWidget::Setup(ADataManageActor* dataManager)
 void UInventoryUserWidget::UpdateInventory(int ID, int count)
 {
 	FItemParamStruct *tmpItemParam = nullptr;
-/*
+
 	//itemLibCheck
 	for(FItemParamStruct *interParam : _DataManager->ItemParamList)
 	{
@@ -37,32 +37,33 @@ void UInventoryUserWidget::UpdateInventory(int ID, int count)
 		return;
 	}
 
-	for (int i = 0; i < _inventoryIDArray; ++i)
+	for (int i = 0; i < _inventoryIDArray.Num(); ++i)
 	{
 		if(_inventoryIDArray[i] == ID)
 		{
-			UpdateIconWidget(i, count);
+			Async(EAsyncExecution::TaskGraphMainThread, [this, i, count]()
+			{
+				UpdateIconWidget(i, count);
+			});
 			return;
 		}
 	}
 
-	_inventoryIDArray.Add(id);
-	CreateIconWidget(tmpItemParam, count);
-*/
+	_inventoryIDArray.Add(ID);
+	
+
+	Async(EAsyncExecution::TaskGraphMainThread, [this, tmpItemParam, count]()
+	{
+		CreateIconWidget(*tmpItemParam, count);
+	});
+
 }
-
-
 
 void UInventoryUserWidget::CreateIconWidget_Implementation(FItemParamStruct tmpItemParam, int count)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("C++側でのデフォルト実装が呼ばれました。"));
 }
 
-
-
-
 void UInventoryUserWidget::UpdateIconWidget_Implementation(int index, int count)
-{
-		
+{	
 }
 
