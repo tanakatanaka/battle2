@@ -19,11 +19,7 @@ class BATTLE__API UIconUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UTexture2D* LoadTextureFromFile();
-	void UpdateIconInfo(FItemParamStruct itemParam, int count);
-private:
-	FItemParamStruct _ItemParam;
-	int _count;
-
+	UFUNCTION(BlueprintCallable)
+	UTexture2D* LoadTextureFromFile(const FString& ImagePath);
 
 };
