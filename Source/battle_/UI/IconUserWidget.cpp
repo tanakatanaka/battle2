@@ -6,8 +6,11 @@
 #include "Engine/PostProcessVolume.h"
 
 
-UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& ImagePath)
+UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& Path)
 {
+    FString ImagePath = FPaths::ProjectContentDir() + Path;
+
+
     // ファイルをバイト配列に読み込む
     TArray<uint8> ImageData;
     if (!FFileHelper::LoadFileToArray(ImageData, *ImagePath))
