@@ -1,54 +1,32 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "IconUserWidget.h"
-#include "IImageWrapper.h"
-#include "IImageWrapperModule.h"
 #include "Engine/Texture2D.h"
-#include "Engine/PostProcessVolume.h"
+#include "UObject/ConstructorHelpers.h"
+#include "Misc/Paths.h"
 
-
-UTexture2D* UIconUserWidget::LoadTextureFromFile(const FString& Path)
+void UIconUserWidget::LoadAssetAsync(const FString& AssetPath)
 {
-    FString ImagePath = FPaths::ProjectContentDir() + Path;
-
-
-    // ファイルをバイト配列に読み込む
-    TArray<uint8> ImageData;
-    if (!FFileHelper::LoadFileToArray(ImageData, *ImagePath))
+    if (StreamableManager == nullptr)
     {
-        UE_LOG(LogTemp, Error, TEXT("Failed to load image file: %s"), *ImagePath);
-        return nullptr;
+        StreamableManager = &(UAssetManager::GetStreamableManager());
     }
 
-    // ImageWrapper モジュールの取得と初期化
-    IImageWrapperModule& ImageWrapperModule = FModuleManager::LoadModuleChecked<IImageWrapperModule>(FName("ImageWrapper"));
-    TSharedPtr<IImageWrapper> ImageWrapper = ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);
+    // ソフトオブジェクトパスを生成
+    FSoftObjectPath SoftObjectPath(AssetPath);
 
-    // 画像データをデコード
-    if (ImageWrapper.IsValid() && ImageWrapper->SetCompressed(ImageData.GetData(), ImageData.Num()))
+    // 非同期ロードを開始
+    StreamableManager->RequestAsyncLoad(SoftObjectPath, FStreamableDelegate::CreateLambda([SoftObjectPath, this]()
     {
-        // 画像の幅と高さを取得
-        int32 Width = ImageWrapper->GetWidth();
-        int32 Height = ImageWrapper->GetHeight();
+        UObject* LoadedAsset = SoftObjectPath.ResolveObject();
+        UTexture2D* LoadedTexture = Cast<UTexture2D>(LoadedAsset);
 
-        TArray<uint8> RawData;
-        if (ImageWrapper->GetRaw(ERGBFormat::BGRA, 8, RawData))
+        if (LoadedTexture)
         {
-            // テクスチャ作成
-            UTexture2D* Texture = UTexture2D::CreateTransient(Width, Height, PF_B8G8R8A8);
-
-            // テクスチャの設定
-            void* TextureData = Texture->GetPlatformData()->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
-            FMemory::Memcpy(TextureData, RawData.GetData(), RawData.Num());
-            Texture->GetPlatformData()->Mips[0].BulkData.Unlock();
-
-            // テクスチャを更新
-            Texture->UpdateResource();
-
-            return Texture;
+            CreateIconImage(LoadedTexture);
         }
-    }
-
-    UE_LOG(LogTemp, Error, TEXT("Failed to decode image data."));
-    return nullptr;
+    }));
 }
 
+void UIconUserWidget::CreateIconImage_Implementation(UTexture2D* LoadedTexture)
+{
+}
