@@ -4,12 +4,14 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Misc/Paths.h"
 
-void UIconUserWidget::LoadAssetAsync(const FString& AssetPath)
+void UIconUserWidget::LoadAssetAsync(const FString& Path)
 {
     if (StreamableManager == nullptr)
     {
         StreamableManager = &(UAssetManager::GetStreamableManager());
     }
+
+     FString AssetPath = FPaths::ProjectContentDir() + "Textures/" + Path + "." + Path;
 
     // ソフトオブジェクトパスを生成
     FSoftObjectPath SoftObjectPath(AssetPath);

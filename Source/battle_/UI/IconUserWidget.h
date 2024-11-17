@@ -24,7 +24,7 @@ class BATTLE__API UIconUserWidget : public UUserWidget
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void LoadAssetAsync(const FString& AssetPath);
+	void LoadAssetAsync(const FString& Path);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Icon")
 	void CreateIconImage(UTexture2D* LoadedTexture);
