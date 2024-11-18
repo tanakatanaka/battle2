@@ -30,6 +30,6 @@ public:
 	void CreateIconImage(UTexture2D* LoadedTexture);
 	virtual void CreateIconImage_Implementation(UTexture2D* LoadedTexture);
 
-private:
-	FStreamableManager *StreamableManager = nullptr;
+	void OnLoadCompleted();
+
 };

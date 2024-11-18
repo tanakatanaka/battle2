@@ -6,18 +6,13 @@
 
 void UIconUserWidget::LoadAssetAsync(const FString& Path)
 {
-    if (StreamableManager == nullptr)
-    {
-        StreamableManager = &(UAssetManager::GetStreamableManager());
-    }
-
-     FString AssetPath = FPaths::ProjectContentDir() + "Textures/" + Path + "." + Path;
+     FString AssetPath = "/Game/Textures/" + Path + "." + Path;
 
     // ソフトオブジェクトパスを生成
     FSoftObjectPath SoftObjectPath(AssetPath);
 
     // 非同期ロードを開始
-    StreamableManager->RequestAsyncLoad(SoftObjectPath, FStreamableDelegate::CreateLambda([SoftObjectPath, this]()
+    UAssetManager::GetStreamableManager().RequestAsyncLoad(SoftObjectPath, FStreamableDelegate::CreateLambda([SoftObjectPath, this]()
     {
         UObject* LoadedAsset = SoftObjectPath.ResolveObject();
         UTexture2D* LoadedTexture = Cast<UTexture2D>(LoadedAsset);

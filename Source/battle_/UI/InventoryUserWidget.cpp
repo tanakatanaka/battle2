@@ -56,8 +56,8 @@ void UInventoryUserWidget::UpdateInventory(int ID, int count)
 	{
 		CreateIconWidget(*tmpItemParam, count);
 	});
-
 }
+
 
 void UInventoryUserWidget::CreateIconWidget_Implementation(FItemParamStruct tmpItemParam, int count)
 {
