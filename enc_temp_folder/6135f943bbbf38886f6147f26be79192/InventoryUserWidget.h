@@ -35,8 +35,6 @@ public:
 	void CreateIconWidget(FItemParamStruct itemParam, int count);
 	virtual void CreateIconWidget_Implementation(FItemParamStruct itemParam, int count);
 
-	void EraseID(int ID);
-
 private:
 		TObjectPtr<ADataManageActor> _DataManager;
 		TArray<int> _inventoryIDArray;

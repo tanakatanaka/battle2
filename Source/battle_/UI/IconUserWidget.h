@@ -13,6 +13,7 @@
 
 class UTexture2D;
 
+DECLARE_DELEGATE_OneParam(FIntDelegate, int32);
 
 /**
  * 
@@ -26,10 +27,20 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LoadAssetAsync(const FString& Path);
 
+	//UFUNCTION(BlueprintCallable)
+	//void EraseInventoryId(int id);
+
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Icon")
 	void CreateIconImage(UTexture2D* LoadedTexture);
 	virtual void CreateIconImage_Implementation(UTexture2D* LoadedTexture);
 
-	void OnLoadCompleted();
+	void BindIntDelegate(const FIntDelegate& Delegate);
+	
+	void TriggerDelegate(int32 Value);
+
+
+private:
+	// デリゲートのインスタンス
+	FIntDelegate OnIntValueChanged;
 
 };

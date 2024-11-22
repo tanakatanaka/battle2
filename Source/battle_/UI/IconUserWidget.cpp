@@ -27,3 +27,16 @@ void UIconUserWidget::LoadAssetAsync(const FString& Path)
 void UIconUserWidget::CreateIconImage_Implementation(UTexture2D* LoadedTexture)
 {
 }
+
+void UIconUserWidget::TriggerDelegate(int32 Value)
+{
+    if (OnIntValueChanged.IsBound())
+    {
+        OnIntValueChanged.Execute(Value);
+    }
+}
+
+void UIconUserWidget::BindIntDelegate(const FIntDelegate& Delegate)
+{
+    OnIntValueChanged = Delegate; // デリゲートを代入
+}

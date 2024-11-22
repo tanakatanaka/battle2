@@ -61,13 +61,7 @@ void UInventoryUserWidget::UpdateInventory(int ID, int count)
 
 void UInventoryUserWidget::SetIconDelegate(UIconUserWidget* iconUserWidget)
 {
-	FIntDelegate MyDelegate;
-	MyDelegate.BindLambda([this](int32 Value)
-	{
-		this->EraseID(Value);
-	});
 
-	iconUserWidget->BindIntDelegate(MyDelegate);
 }
 
 
@@ -79,7 +73,3 @@ void UInventoryUserWidget::UpdateIconWidget_Implementation(int index, int count)
 {	
 }
 
-void UInventoryUserWidget::EraseID(int ID)
-{
-	_inventoryIDArray.Remove(ID);
-}
