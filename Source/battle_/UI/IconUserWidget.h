@@ -27,15 +27,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LoadAssetAsync(const FString& Path);
 
-	//UFUNCTION(BlueprintCallable)
-	//void EraseInventoryId(int id);
-
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Icon")
 	void CreateIconImage(UTexture2D* LoadedTexture);
 	virtual void CreateIconImage_Implementation(UTexture2D* LoadedTexture);
 
 	void BindIntDelegate(const FIntDelegate& Delegate);
 	
+	UFUNCTION(BlueprintCallable)
 	void TriggerDelegate(int32 Value);
 
 
